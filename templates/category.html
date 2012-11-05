@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="breadcrumbs">
+	<a href="{% url bakery %}">Bakery</a>
+</div>
+
+<h2>{{category.display_name}}</h2>
+
+<div class="items_section">
+	{% for item in items %}
+	<a class="featured" href="{% url item item.id %}">
+		<span class="name">{{item.display_name}}</span>
+		<span class="price">${{item.price}}</span>
+		<img src="{{item.image_url}}"/>
+		<span class="short_desc">{{item.short_desc}}</span>	
+	</a>
+	{% endfor %}
+</div>
+
+{% endblock %}

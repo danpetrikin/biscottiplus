@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Bakery</h2>
+
+<div class="featured_section rounded_div grey_gradient">
+	<h2>Featured</h2>
+	<table><tr>
+	{% for item in featured %}
+		<td class="featured">
+			<a href="{% url item item.id %}" style="text-decoration: none;">
+					<h3 class="name">{{item.display_name}}</h3>
+					<span class="price">${{item.price}}</span>
+					<img src="{{item.image_url}}" alt="{{item.display_name}}"/>
+					<span class="short_desc">{{item.short_desc}}</span>	
+			</a>
+		</td>
+		{% if forloop.last %}
+	     </tr>
+	   {% else %}
+	     {% if forloop.counter|divisibleby:"3" %}
+	       </tr><tr>
+	     {% endif %}
+	   {% endif %}
+	{% endfor %}
+	</table>
+</div>
+
+<div class="category_section rounded_div grey_gradient">
+	<h2>Categories</h2>
+	<table><tr>
+	{% for category in categories %}
+	<td class="category">
+		<a href="{% url category category.id %}" >
+			<span>{{category.display_name}}</span>
+			<img src="{{category.image_url}}" alt="{{category.display_name}}"/>
+		</a>
+	</td>
+	{% if forloop.last %}
+	     </tr>
+	   {% else %}
+	     {% if forloop.counter|divisibleby:"3" %}
+	       </tr><tr>
+	     {% endif %}
+	   {% endif %}
+	{% endfor %}
+	</td>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Make My Cookies &trade;</h2>
+
+<form action="." method="post">
+	<label for="email">Email</label>
+	<input type="email" name="email" id="email" />
+	
+	<label for="phone_number">Phone Number</label>
+	<input type="text" name="phone_number" id="phone_number" />
+	
+	<label for="instructions">Instructions</label>
+	<textarea name="instructions" id="instructions"></textarea>
+	
+	<label for="text_recipe">Recipe</label>
+	<textarea name="text_recipe" id="text_recipe"></textarea>
+	
+</form>
+
+
+
+{% endblock %}

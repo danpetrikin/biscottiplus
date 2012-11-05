@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Contact Us!</h2>
+
+<form action="." method="post"> 
+<p>If you have a question, comment, or suggestion we'd love to hear it!</p>
+
+<label for="email">Email</label>
+<input name="email" id="email" type="email"/>
+
+<label for="message">Message</label>
+<textarea name="message" id="message"></textarea>
+
+<input type="submit" value="Send Your Message" />
+
+</form>
+{% endblock %}

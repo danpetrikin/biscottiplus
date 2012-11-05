@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="breadcrumbs">
+	<a href="{% url bakery %}">Bakery</a> -> <a href="{% url category item.category.id %}">{{item.category.display_name}}</a>
+</div>
+
+<h2>{{item.display_name}}</h2>
+
+<div class="item">
+	<span class="price">${{item.price}}</span>
+	<img src="{{item.image_url}}"/>
+	<span class="short_desc">{{item.long_desc}}</span>
+	
+	<button id="add">Add To Cart</button>
+	<a href="{% url checkout %}">Checkout</a>
+	<div id = "alert_placeholder"></div>
+		
+</div>
+
+{% endblock %}
+
+
+
+
+{% block js %}
+<script type="text/javascript">
+
+	bootstrap_alert = function() {}
+	bootstrap_alert.warning = function(message) {
+	            $('#alert_placeholder').append('<div class="alert"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+	}
+
+
+	$('#add').click(function(){
+		$.ajax({
+			url : '{% url item_to_cart item.id %}',
+			type: 'POST',
+	        success : function(data) {
+	        	if(data.success == true){
+					bootstrap_alert.warning('{{item.display_name}} added to cart');	        		
+	        	}
+	        }
+		});
+	});
+</script>
+{% endblock %}

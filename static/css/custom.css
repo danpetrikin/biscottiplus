@@ -1,0 +1,139 @@
+.featured_section{
+	margin-bottom: 20px;
+}
+
+
+.container {
+	width:75%;
+	margin: 0px auto;
+}
+
+.featured a, .category a{
+	text-decoration: none;
+	color: black;
+}
+
+.wood {
+	background-image: linear-gradient(left , rgb(183,212,172) 15%, rgb(144,189,127) 58%, rgb(177,212,155) 79%);
+	background-image: -o-linear-gradient(left , rgb(183,212,172) 15%, rgb(144,189,127) 58%, rgb(177,212,155) 79%);
+	background-image: -moz-linear-gradient(left , rgb(183,212,172) 15%, rgb(144,189,127) 58%, rgb(177,212,155) 79%);
+	background-image: -webkit-linear-gradient(left , rgb(183,212,172) 15%, rgb(144,189,127) 58%, rgb(177,212,155) 79%);
+	background-image: -ms-linear-gradient(left , rgb(183,212,172) 15%, rgb(144,189,127) 58%, rgb(177,212,155) 79%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0.15, rgb(183,212,172)),
+		color-stop(0.58, rgb(144,189,127)),
+		color-stop(0.79, rgb(177,212,155))
+	);
+}
+
+.navbar ul{
+	position:relative;
+	display:inline-block;
+	left:30px;
+	top: 30px;
+}
+
+.navbar li{
+	list-style: none;
+	display:inline-block;
+	min-width: 60px;
+	height:40px;
+	text-align: center;
+	font-family: 'Anaheim', sans-serif;
+	font-size:20px;
+	color: #77887d;
+}
+
+.navbar img{
+	display:inline-block;
+}
+.navbar a{
+	display:inline-block;
+}
+
+.navbar li a{
+	padding: 0 30px 0 0;
+	display: inline-block;
+	text-decoration: none;
+	color: #77887d;
+}
+
+.navbar li.active a{
+	font-weight: bold;
+	color: #222523;
+}
+
+.navbar img.logo{
+	margin-top:30px;
+	margin-left:100px;
+	margin-bottom:25px;
+	display:inline-block;
+}
+
+.navbar img.cart{
+	display:inline-block;
+	float:right;
+	margin-right:50px;
+	margin-left:50px;
+	position:relative;
+	top:20px;
+	width: 50px;
+	height: 40px;
+	
+}
+
+.footer{
+	height:100px;
+}
+
+
+.featured_section ul {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+}
+
+
+.category_section ul {
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+}
+
+
+.rounded_div{
+	border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	
+}
+
+.grey_gradient{
+	border: 1px solid rgb(173,171,173);
+	background-image: linear-gradient(bottom, rgb(222,222,222) 15%, rgb(173,171,173) 58%, rgb(205,207,207) 79%);
+	background-image: -o-linear-gradient(bottom, rgb(222,222,222) 15%, rgb(173,171,173) 58%, rgb(205,207,207) 79%);
+	background-image: -moz-linear-gradient(bottom, rgb(222,222,222) 15%, rgb(173,171,173) 58%, rgb(205,207,207) 79%);
+	background-image: -webkit-linear-gradient(bottom, rgb(222,222,222) 15%, rgb(173,171,173) 58%, rgb(205,207,207) 79%);
+	background-image: -ms-linear-gradient(bottom, rgb(222,222,222) 15%, rgb(173,171,173) 58%, rgb(205,207,207) 79%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.15, rgb(222,222,222)),
+		color-stop(0.58, rgb(173,171,173)),
+		color-stop(0.79, rgb(205,207,207))
+	);
+}
+
+
