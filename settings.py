@@ -127,15 +127,17 @@ INSTALLED_APPS = (
     'djangotoolbox',
     'django_mongodb_engine',
     'biscotti.core',
-    'singleton_models'
+    'singleton_models',
+    'djrill'
 )
 SINGLETON_NONREL = True
 
 # django-registration
 ACCOUNT_ACTIVATION_DAYS = 7
-EMAIL_HOST = 'localhost'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'admin@biscottiplus.com'
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = "587"
+EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+DEFAULT_FROM_EMAIL = 'support@biscottiplus.com'
 LOGIN_REDIRECT_URL = '/'
 
 

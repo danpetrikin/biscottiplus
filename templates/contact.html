@@ -3,8 +3,23 @@
 {% block content %}
 <h2>Contact Us!</h2>
 
-<form action="." method="post"> 
+{% if posted and not success %}
+	<div class="form_error">
+		Please ensure all fields are filled out and correct.
+	</div>
+{% endif %}
+
+{% if posted and success %}
+<h3>Thanks for contacting us. We will get back to you as soon as possible</h3>
+{% else %}
+<form action="{% url contact %}" method="post"> 
 <p>If you have a question, comment, or suggestion we'd love to hear it!</p>
+
+<label for="name">Name</label>
+<input name="name" id="name" type="text"/>
+
+<label for="phonenumber">Phone Number</label>
+<input name="phonenumber" id="phonenumber" type="text"/>
 
 <label for="email">Email</label>
 <input name="email" id="email" type="email"/>
@@ -13,6 +28,6 @@
 <textarea name="message" id="message"></textarea>
 
 <input type="submit" value="Send Your Message" />
-
+{%endif%}
 </form>
 {% endblock %}

@@ -4,21 +4,52 @@
 
 <h2>Make My Cookies &trade;</h2>
 
-<form action="." method="post">
+{% if posted and not success %}
+	<div class="form_error">
+		Please ensure all fields are filled out and correct.
+	</div>
+{% endif %}
+
+{% if posted and success %}
+<h3>Your order is being proccessed. We will get back to you as soon as possible</h3>
+{% else %}
+<form action="{% url mmc %}" method="post" enctype="multipart/form-data">
+	
 	<label for="email">Email</label>
 	<input type="email" name="email" id="email" />
 	
-	<label for="phone_number">Phone Number</label>
-	<input type="text" name="phone_number" id="phone_number" />
+	<label for="name">Name</label>
+	<input type="text" name="name" id="name" />
 	
-	<label for="instructions">Instructions</label>
+	<label for="phonenumber">Phone Number</label>
+	<input type="text" name="phonenumber" id="phonenumber" />
+	
+	<label for="instructions">Special Instructions</label>
 	<textarea name="instructions" id="instructions"></textarea>
 	
-	<label for="text_recipe">Recipe</label>
+	<label for="text_recipe">Copy and paste your Recipe</label>
 	<textarea name="text_recipe" id="text_recipe"></textarea>
 	
+	<input type="hidden" name="num_of_files" id="num_of_files" value="1"/>
+	<label for="file_recipe">Or Attach your Recipe Files</label>
+	<div id="filesection">
+	<input type="file" name="file1"/>
+	</div>
+	<a id="add_another" class="button">Add Another</a>
+	
+	<input type="submit" value="Make My Cookies!"/>
 </form>
+{% endif %}
 
 
+{% endblock %}
 
+{% block js %}
+<script type="text/javascript">
+$("#add_another").click(function(){
+	var i = parseInt($("#num_of_files").val()) + 1;
+	$("#num_of_files").val(i.toString());
+	$("#filesection").append("<input type=\"file\" name=\"file" + i.toString() + "\"/>");
+});
+</script>
 {% endblock %}

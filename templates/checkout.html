@@ -11,6 +11,12 @@
 
 <div class="cart_checkout">
 <form action="{% url checkout %}" method="post">
+	{% if error %}
+	<div class="form_error">
+		There was a problem processing your credit card. Please ensure all fields are filled out and correct.
+	</div>
+	{% endif %}
+	
 	
 	<div class="cart_contents">
 		<span class="column_header">Name</span><span class="column_header">Quantity</span><span class="column_header">Price</span>

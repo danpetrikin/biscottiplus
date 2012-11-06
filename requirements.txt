@@ -7,9 +7,11 @@ django-annoying==0.7.6
 -e git+https://github.com/MirkoRossini/django-redis-engine.git@fc6fddbcf080b0652efb728314e67b21d4b8186a#egg=django_redis_engine-dev
 -e git+https://github.com/danpetrikin/django-singletons@f35aad54eb42c5c70f58a0b7e05df28b9635ceb7#egg=django_singletons-dev
 -e git+https://github.com/mburstiner/djangotoolbox@73ffcb76ee606bb52505124f88454036fa938daa#egg=djangotoolbox-dev
+-e git+https://github.com/FTW/Djrill.git@4ebe72110bbda93607b50716ad6eb1e465a5aeb0#egg=djrill-dev
 gunicorn==0.15.0
 meld3==0.6.9
 pymongo==2.3
+python-cloudfiles==1.7.10
 redis==2.7.1
 requests==0.14.2
 stripe==1.7.5

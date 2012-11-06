@@ -1,8 +1,10 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic.base import RedirectView
 from biscotti.core.views import *
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from djrill import DjrillAdminSite
+
+admin.site = DjrillAdminSite()
 admin.autodiscover()
 
 urlpatterns = patterns('biscotti.core.views',
@@ -19,5 +21,6 @@ urlpatterns = patterns('biscotti.core.views',
     url(r'^item/(?P<id>\w+)/', 'item', name='item'),
     url(r'^item_to_cart/(?P<id>\w+)/', 'item_to_cart', name='item_to_cart'),
     url(r'^order_confirmed/(?P<id>\w+)/', 'order_confirmed', name='order_confirmed'),
-    url(r'^remove_item_from_cart/(?P<id>\w+)/', 'remove_item_from_cart', name='remove_item_from_cart')
+    url(r'^remove_item_from_cart/(?P<id>\w+)/', 'remove_item_from_cart', name='remove_item_from_cart'),
+    url(r'^foward/', 'foward', name='foward')
 )

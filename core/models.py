@@ -76,10 +76,14 @@ class Order(BaseModel):
     price_in_cents = models.IntegerField(null=False, default=200)
     paid = models.BooleanField(default=False)
     shipping = models.IntegerField(null=True)
+    ship_to = models.TextField(null=True, blank=True)
+    email = models.CharField(max_length=200, default='')
+    html_content = models.TextField(null=True, blank=True)
     
 class AppSettings(SingletonModel):
     tax_percentage = models.IntegerField(null=False, default=7)
     shipping_on = models.BooleanField(default=False)
+    send_to_mail_comma_separated_list = models.CharField(null=False, default='dan@blackbeltprogramming.com', max_length=1000)
     
 class ShippingOption(BaseModel):
     description = models.CharField(max_length=64, default='')
