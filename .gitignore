@@ -1,2 +1,5 @@
+.project
+.pydevproject
+static/product_images/*
 *.pyc
 local_settings.py
