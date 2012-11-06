@@ -126,7 +126,7 @@ INSTALLED_APPS = (
     "gunicorn",
     'djangotoolbox',
     'django_mongodb_engine',
-    'biscotti.core',
+    'core',
     'singleton_models',
     'djrill'
 )

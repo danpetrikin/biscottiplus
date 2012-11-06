@@ -1,13 +1,13 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic.base import RedirectView
-from biscotti.core.views import *
+from core.views import *
 from django.contrib import admin
 from djrill import DjrillAdminSite
 
 admin.site = DjrillAdminSite()
 admin.autodiscover()
 
-urlpatterns = patterns('biscotti.core.views',
+urlpatterns = patterns('core.views',
     # Examples:
     url(r'^$', 'home', name='home'),
     url(r'^bakery', 'bakery', name='bakery'),
