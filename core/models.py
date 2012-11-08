@@ -84,6 +84,9 @@ class AppSettings(SingletonModel):
     tax_percentage = models.IntegerField(null=False, default=7)
     shipping_on = models.BooleanField(default=False)
     send_to_mail_comma_separated_list = models.CharField(null=False, default='dan@blackbeltprogramming.com', max_length=1000)
+    featured_section_on = models.BooleanField(default=True)
+    featured_section_text = models.CharField(null=False, default='Featured', max_length=1000)
+    categories_section_text = models.CharField(null=False, default='Categories', max_length=1000)
     
 class ShippingOption(BaseModel):
     description = models.CharField(max_length=64, default='')

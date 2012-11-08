@@ -26,7 +26,11 @@ def terms(request):
 
 @render_to('storefront.html')
 def bakery(request):
-    return {'tab':'bakery','featured':StoreItem.objects.filter(active=True, featured=True), 'categories':Category.objects.filter(active=True)}
+    return {'tab':'bakery','featured':StoreItem.objects.filter(active=True, featured=True),
+             'categories':Category.objects.filter(active=True),
+             'featured_on': AppSettings.instance(AppSettings).featured_section_on,
+             'featured_text': AppSettings.instance(AppSettings).featured_section_text,
+             'category_text': AppSettings.instance(AppSettings).categories_section_text}
 
 @render_to('about.html')
 def about(request):
