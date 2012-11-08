@@ -19,7 +19,7 @@
 <p>Traditions shouldn't fade. We'll help continue to provide your family with the cookies
 	you've had for generations.</p>
 </div>
-<table class="myform light_blue_gradient rounded_bottom_div" style="padding: 20px; width: 600px;" >
+<table class="myform light_blue_gradient" style="padding: 20px; width: 600px;" >
 <form action="{% url mmc %}" method="post" enctype="multipart/form-data">
 	<tr>
 	<td><label for="email">Email</label></td>
@@ -52,10 +52,12 @@
 	</div>
 	</td>
 	</tr>
+</table>
+<table class="myform grey_gradient rounded_bottom_div" style="padding-left: 40px; padding-top: 10px; width: 600px;" >
 	<tr>
-	<td><button type="button" class="custombutton"><a id="add_another">Add Another</a></button></td>
+	<td><a id="add_another"><button type="button" class="button2">Add Another</button></a></td>
 	
-	<td><input type="submit" value="Make My Cookies!" class="custombutton"/></td>
+	<td><input type="submit" value="Make My Cookies!" class="button2"/></td>
 	</tr>
 </form>
 </table>

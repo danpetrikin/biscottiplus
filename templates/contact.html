@@ -15,7 +15,7 @@
 <div class="rounded_top_div grey_gradient" style="width: 600px; margin: auto">
 <p style="text-align: center;">If you have a question, comment, or suggestion we'd love to hear it!</p>
 </div>
-<table class="myform light_blue_gradient rounded_bottom_div" style="padding: 20px; width: 600px;" >
+<table class="myform light_blue_gradient" style="padding: 20px; width: 600px;" >
 <form action="{% url contact %}" method="post"> 
 
 <tr>
@@ -36,11 +36,10 @@
 <td><label for="message">Message</label></td>
 <td><textarea name="message" id="message"></textarea></td>
 </tr>
-
-<tr>
-<td></td><td><input type="submit" value="Send Your Message" class="custombutton" /></td>
-</tr>
 </table>
+<div class="myform grey_gradient rounded_bottom_div" style="width: 600px; text-align: center;" >
+<input type="submit" value="Send" class="button2"  style="margin: 10px; width: 150px;"/>
+</div>
 {%endif%}
 </form>
 {% endblock %}

@@ -18,9 +18,9 @@
 	</div>
 	{% endif %}
 	
-	
-	<div class="cart_contents">
-		<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+	<div style="margin: auto; text-align: center;">
+	<div class="cart_contents light_blue_gradient rounded_top_div" style="width: 600px; margin: auto;">
+		<table class="myform " style="padding: 20px;" >
 		<tr><td class="column_header">Name</td><td><span class="column_header">Quantity</span></td><td><span class="column_header">Price</span></td></tr>
 		{% for item, quantity in cart.items %}
 		<tr class="itemrow" id="row{{item.id}}"></td>
@@ -28,7 +28,7 @@
 			<td><input class="column integer" type="text" name="id_{{item.id}}" id="{{item.id}}" value="{{quantity}}" style="width: 40px;"/>
 			<input type="hidden" id="price{{item.id}}" value="{{item.price}}"/></td>
 			<td><span class="column" id="showprice{{item.id}}">${{quantity|multiplymoney:item.price}}</span></td>
-			<td><button type="button" class="custombutton"><a class="remove_from_cart" id="remove{{item.id}}">Remove</a></button></td>
+			<td><a class="remove_from_cart" id="remove{{item.id}}"><button type="button" class="button2">Remove</button></a></td>
 		</tr>
 		{% endfor %}
 		
@@ -43,10 +43,8 @@
 		{% endif %}
 		</tr>
 		</table>
-	</div>
-	<br/>
 	
-		<table class="price_totals" style="margin: auto;">
+		<table class="price_totals" style="margin: auto; text-align: left;">
 		<tr>
 		<td><label for="subtotalprice">Subtotal</label></td>
 		<td><span id="subtotalprice"></span></td></tr>
@@ -59,13 +57,15 @@
 		<tr><td><label for="totalprice">Total</label></td>
 		<td><span id="totalprice"></span></td></tr>
 		</table>
-	<br/>
-	<div class="credit_card_info">
-		<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+		
+	</div></div>
+	<div class="credit_card_info grey_gradient rounded_bottom_div" style="text-align: center;width: 600px; margin: auto;">
+		<hr/>
+		<table class="myform ">
 		<tr><td><label for="cardno">Card Number</label></td>
-		<td><input type="text" name="cardno"  maxlength="17" /></td></tr>
+		<td><input type="text" name="cardno"  maxlength="16" /></td></tr>
 		<tr><td><label for="cvv">CVV</label></td>
-		<td><input type="text" name="cvv" maxlength="3"/></td></tr>
+		<td><input type="text" name="cvv" maxlength="3" style="width: 40px;"/></td></tr>
 		<tr><td><label>Expiration Month</label></td>
 		<td><select name="month">
 			<option value="1">01</option>
@@ -96,11 +96,8 @@
 			<option value="2021">21</option>
 		</select></td></tr>
 		</table>
-	</div>
-	<br/>
-	
-	<div class="shipping_info">
-		<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+		<hr/>
+		<table class="myform  " >
 		<tr><td><label for="email">Email</label></td>
 		<td><input type="email" name="email"/></td></tr>
 		
@@ -122,11 +119,12 @@
 		<tr><td><label for="zip">Zip</label></td>
 		<td><input type="text" name="zip" /></td></tr>
 		</table>
+		
+		<div style="text-align: center;"><input class="button2" type="submit" value="Buy These!" /></div>
+		<br/>
 	</div>
 	
-	<br/>
 	
-	<div style="text-align: center;"><input class="custombutton" type="submit" value="Buy These!" /></div>
 </form>
 </div>
 
