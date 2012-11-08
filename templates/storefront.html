@@ -4,9 +4,9 @@
 
 <h1 style="text-align: center">Bakery</h1>
 
-<div class="featured_section rounded_div grey_gradient">
+<div class="featured_section rounded_div red_gradient">
 	<h2 style="text-align: center">Featured</h2>
-	<table style="padding-bottom: 20px; padding-left: 20px;"><tr>
+	<table style="padding-bottom: 20px; padding-left: 20px; padding-right: 20px;"><tr>
 	{% for item in featured %}
 		<td class="featured">
 			<a href="{% url item item.id %}" style="text-decoration: none;">
@@ -30,7 +30,7 @@
 
 <div class="category_section rounded_div grey_gradient">
 	<h2 style="text-align: center">Categories</h2>
-	<table style="padding-bottom: 20px; padding-left: 20px;"><tr>
+	<table style="padding-bottom: 20px; padding-left: 20px; padding-right: 20px;"><tr>
 	{% for category in categories %}
 	<td class="featured" style="text-align: center;">
 		<a href="{% url category category.id %}" >

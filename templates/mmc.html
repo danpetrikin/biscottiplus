@@ -2,7 +2,9 @@
 
 {% block content %}
 
+
 <h1 style="text-align: center;">Make My Cookies &trade;</h1>
+
 
 {% if posted and not success %}
 	<div class="form_error">
@@ -13,7 +15,11 @@
 {% if posted and success %}
 <h3>Your order is being proccessed. We will get back to you as soon as possible</h3>
 {% else %}
-<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+<div class="grey_gradient rounded_top_div" style="text-align: center; width: 600px; margin: auto;">
+<p>Traditions shouldn't fade. We'll help continue to provide your family with the cookies
+	you've had for generations.</p>
+</div>
+<table class="myform red_gradient rounded_bottom_div" style="padding: 20px; width: 600px;" >
 <form action="{% url mmc %}" method="post" enctype="multipart/form-data">
 	<tr>
 	<td><label for="email">Email</label></td>

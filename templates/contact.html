@@ -12,9 +12,10 @@
 {% if posted and success %}
 <h3 style="text-align: center;">Thanks for contacting us. We will get back to you as soon as possible</h3>
 {% else %}
+<div class="rounded_top_div grey_gradient" style="width: 600px; margin: auto">
 <p style="text-align: center;">If you have a question, comment, or suggestion we'd love to hear it!</p>
-
-<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+</div>
+<table class="myform light_blue_gradient rounded_bottom_div" style="padding: 20px; width: 600px;" >
 <form action="{% url contact %}" method="post"> 
 
 <tr>

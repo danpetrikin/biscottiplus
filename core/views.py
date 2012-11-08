@@ -20,6 +20,10 @@ stripe.api_key = settings.STRIPE_API_KEY
 def home(request):
     return {'tab':'home'}
 
+@render_to('terms.html')
+def terms(request):
+    return {}
+
 @render_to('storefront.html')
 def bakery(request):
     return {'tab':'bakery','featured':StoreItem.objects.filter(active=True, featured=True), 'categories':Category.objects.filter(active=True)}

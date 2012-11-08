@@ -4,13 +4,13 @@
 
 <h1 style="text-align: center;">{{item.display_name}}</h1>
 
-<div class="rounded_div grey_gradient">
+<div class="rounded_div light_blue_gradient">
 	<div style="padding: 20px;">
 	<img src="/{{item.image_url}}" style="width: 300px; height: 300px; float: left; padding-right: 20px;"/>
 	<p style="font-size: 20px;">{{item.long_desc}}</p>
 	<div style="text-align: center; margin-bottom: 15px;"><p style="font-size: 26px;">${{item.price}}</p><br/>
-	<button id="add" class="custombutton">Add To Cart</button>
 	<button class="custombutton" type="button"><a href="{% url checkout %}" >Checkout</a></button>
+	<button id="add" class="custombutton">Add To Cart</button>
 	</div>
 	<div id = "alert_placeholder" style="clear: both;"></div>
 	</div>
