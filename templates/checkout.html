@@ -7,9 +7,10 @@
 
 {% block content %}
 
-<h2>Checkout</h2>
+<h1 style="text-align: center">Checkout</h1>
 
 <div class="cart_checkout">
+
 <form action="{% url checkout %}" method="post">
 	{% if error %}
 	<div class="form_error">
@@ -19,47 +20,54 @@
 	
 	
 	<div class="cart_contents">
-		<span class="column_header">Name</span><span class="column_header">Quantity</span><span class="column_header">Price</span>
+		<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+		<tr><td class="column_header">Name</td><td><span class="column_header">Quantity</span></td><td><span class="column_header">Price</span></td></tr>
 		{% for item, quantity in cart.items %}
-		<div class="itemrow" id="row{{item.id}}">
-			<span class="column">{{item.name}}</span>
-			<input class="column integer" type="text" name="id_{{item.id}}" id="{{item.id}}" value="{{quantity}}"/>
-			<input type="hidden" id="price{{item.id}}" value="{{item.price}}"/>
-			<span class="column" id="showprice{{item.id}}">${{quantity|multiplymoney:item.price}}</span>
-			<a class="remove_from_cart" id="remove{{item.id}}">Remove</a>
-		</div>
+		<tr class="itemrow" id="row{{item.id}}"></td>
+			<td><span class="column">{{item.name}}</span>
+			<td><input class="column integer" type="text" name="id_{{item.id}}" id="{{item.id}}" value="{{quantity}}" style="width: 40px;"/>
+			<input type="hidden" id="price{{item.id}}" value="{{item.price}}"/></td>
+			<td><span class="column" id="showprice{{item.id}}">${{quantity|multiplymoney:item.price}}</span></td>
+			<td><button type="button" class="custombutton"><a class="remove_from_cart" id="remove{{item.id}}">Remove</a></button></td>
+		</tr>
 		{% endfor %}
 		
 		{% if shipping_on %}
-		<label for="shipping">Shipping</label>
-		<select id="shipping" name="shipping">
+		<tr>
+		<td><label for="shipping">Shipping</label></td>
+		<td colspan="3"><select id="shipping" name="shipping" >
 			{% for option in shipping_options %}
 				<option data-price="{{option.price_in_cents}}" value="{{option.id}}">{{option.description}}</option>
 			{% endfor %}
-		</select>
+		</select></td>
 		{% endif %}
+		</tr>
+		</table>
 	</div>
+	<br/>
 	
-	<div class="price_totals">
-		<label for="subtotalprice">Subtotal</label>
-		<span id="subtotalprice"></span>
-		<label for="tax">Tax</label>
-		<span id="tax"></span>
+		<table class="price_totals" style="margin: auto;">
+		<tr>
+		<td><label for="subtotalprice">Subtotal</label></td>
+		<td><span id="subtotalprice"></span></td></tr>
+		<tr><td><label for="tax">Tax</label></td>
+		<td><span id="tax"></span></td></tr>
 		{% if shipping_on %}
-		<label for="shipping_price">Shipping</label>
-		<span id="shipping_price"></span>
+		<tr><td><label for="shipping_price">Shipping</label></td>
+		<td><span id="shipping_price"></span></td></tr>
 		{% endif %}
-		<label for="totalprice">Total</label>
-		<span id="totalprice"></span>
-	</div>
-	
+		<tr><td><label for="totalprice">Total</label></td>
+		<td><span id="totalprice"></span></td></tr>
+		</table>
+	<br/>
 	<div class="credit_card_info">
-		<label for="cardno">Card Number</label>
-		<input type="text" name="cardno"  maxlength="17" />
-		<label for="cvv">CVV</label>
-		<input type="text" name="cvv" maxlength="3"/>
-		<label>Expiration Month</label>
-		<select name="month">
+		<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+		<tr><td><label for="cardno">Card Number</label></td>
+		<td><input type="text" name="cardno"  maxlength="17" /></td></tr>
+		<tr><td><label for="cvv">CVV</label></td>
+		<td><input type="text" name="cvv" maxlength="3"/></td></tr>
+		<tr><td><label>Expiration Month</label></td>
+		<td><select name="month">
 			<option value="1">01</option>
 			<option value="2">02</option>
 			<option value="3">03</option>
@@ -72,9 +80,10 @@
 			<option value="10">10</option>
 			<option value="11">11</option>
 			<option value="12">12</option>
-		</select>
-		<label>Expiration Year</label>
-		<select name="year">
+		</select></td></tr>
+		<tr>
+		<td><label>Expiration Year</label></td>
+		<td><select name="year">
 			<option value="2012">12</option>
 			<option value="2013">13</option>
 			<option value="2014">14</option>
@@ -85,33 +94,39 @@
 			<option value="2019">19</option>
 			<option value="2020">20</option>
 			<option value="2021">21</option>
-		</select>
+		</select></td></tr>
+		</table>
 	</div>
+	<br/>
 	
 	<div class="shipping_info">
-		<label for="email">Email</label>
-		<input type="email" name="email"/>
+		<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
+		<tr><td><label for="email">Email</label></td>
+		<td><input type="email" name="email"/></td></tr>
 		
-		<label for="shipname">Name</label>
-		<input type="text" name="shipname" />
+		<tr><td><label for="shipname">Name</label></td>
+		<td><input type="text" name="shipname" /></td></tr>
 		
-		<label for="add1">Address Line 1</label>
-		<input type="text" name="add1" />
+		<tr><td><label for="add1">Address Line 1</label></td>
+		<td><input type="text" name="add1" /></td></tr>
 		
-		<label for="add2">Address Line 2</label>
-		<input type="text" name="add2" />
+		<tr><td><label for="add2">Address Line 2</label></td>
+		<td><input type="text" name="add2" /></td></tr>
 		
-		<label for="city">City</label>
-		<input type="text" name="city" />
+		<tr><td><label for="city">City</label></td>
+		<td><input type="text" name="city" /></td></tr>
 		
-		<label for="state">State</label>
-		<input type="text" name="state" />
+		<tr><td><label for="state">State</label></td>
+		<td><input type="text" name="state" /></td></tr>
 		
-		<label for="zip">Zip</label>
-		<input type="text" name="zip" />
+		<tr><td><label for="zip">Zip</label></td>
+		<td><input type="text" name="zip" /></td></tr>
+		</table>
 	</div>
 	
-	<input type="submit" value="Buy These!" />
+	<br/>
+	
+	<div style="text-align: center;"><input class="custombutton" type="submit" value="Buy These!" /></div>
 </form>
 </div>
 

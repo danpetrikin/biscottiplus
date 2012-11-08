@@ -2,21 +2,31 @@
 
 {% block content %}
 
-<div class="breadcrumbs">
-	<a href="{% url bakery %}">Bakery</a>
-</div>
 
-<h2>{{category.display_name}}</h2>
+<h1 style="text-align: center">{{category.display_name}}</h1>
 
 <div class="items_section">
+	<table style="padding-bottom: 20px; padding-left: 20px;"><tr>
 	{% for item in items %}
-	<a class="featured" href="{% url item item.id %}">
-		<span class="name">{{item.display_name}}</span>
-		<span class="price">${{item.price}}</span>
-		<img src="{{item.image_url}}"/>
-		<span class="short_desc">{{item.short_desc}}</span>	
-	</a>
+		<td class="featured">
+			<a href="{% url item item.id %}" style="text-decoration: none;">
+					<h3 class="name" style="text-align: left; float: left">{{item.display_name}}</h3><h3 style="text-align: right;">${{item.price}}</h3>
+					<img src="/{{item.image_url}}" alt="{{item.display_name}}" style="width: 150px; height: 150px; float: left;"/>
+					<div style="float: left; width: 10px;"></div>
+					<p class="short_desc">{{item.short_desc}}</p>
+			</a>
+		</td>
+		{% if forloop.last %}
+	     </tr>
+	   {% else %}
+	     {% if forloop.counter|divisibleby:"3" %}
+	       </tr><tr style="height: 10px;"></tr><tr>
+	     {% else %}
+	     <td style="width: 25px;"></td>
+	     {% endif %}
+	   {% endif %}
 	{% endfor %}
+	</table>
 </div>
 
 {% endblock %}

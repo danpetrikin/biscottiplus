@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>Make My Cookies &trade;</h2>
+<h1 style="text-align: center;">Make My Cookies &trade;</h1>
 
 {% if posted and not success %}
 	<div class="form_error">
@@ -13,32 +13,47 @@
 {% if posted and success %}
 <h3>Your order is being proccessed. We will get back to you as soon as possible</h3>
 {% else %}
+<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
 <form action="{% url mmc %}" method="post" enctype="multipart/form-data">
+	<tr>
+	<td><label for="email">Email</label></td>
+	<td><input type="email" name="email" id="email" /></td>
+	</tr>
 	
-	<label for="email">Email</label>
-	<input type="email" name="email" id="email" />
+	<tr>
+	<td><label for="name">Name</label></td>
+	<td><input type="text" name="name" id="name" /></td>
+	</tr>
+	<tr>
+	<td><label for="phonenumber">Phone Number</label></td>
+	<td><input type="text" name="phonenumber" id="phonenumber" /></td>
+	</tr>
+	<tr>
+	<td><label for="instructions">Special Instructions</label></td>
+	<td><textarea name="instructions" id="instructions"></textarea></td>
+	</tr>
 	
-	<label for="name">Name</label>
-	<input type="text" name="name" id="name" />
+	<tr>
+	<td><label for="text_recipe">Copy and paste your Recipe</label></td>
+	<td><textarea name="text_recipe" id="text_recipe"></textarea></td>
+	</tr>
 	
-	<label for="phonenumber">Phone Number</label>
-	<input type="text" name="phonenumber" id="phonenumber" />
-	
-	<label for="instructions">Special Instructions</label>
-	<textarea name="instructions" id="instructions"></textarea>
-	
-	<label for="text_recipe">Copy and paste your Recipe</label>
-	<textarea name="text_recipe" id="text_recipe"></textarea>
-	
+	<tr>
 	<input type="hidden" name="num_of_files" id="num_of_files" value="1"/>
-	<label for="file_recipe">Or Attach your Recipe Files</label>
-	<div id="filesection">
+	<td><label for="file_recipe">Or Attach your Recipe Files</label></td>
+	<td><div id="filesection">
 	<input type="file" name="file1"/>
 	</div>
-	<a id="add_another" class="button">Add Another</a>
+	</td>
+	</tr>
+	<tr>
+	<td><button type="button" class="custombutton"><a id="add_another">Add Another</a></button></td>
 	
-	<input type="submit" value="Make My Cookies!"/>
+	<td><input type="submit" value="Make My Cookies!" class="custombutton"/></td>
+	</tr>
 </form>
+</table>
+</div>
 {% endif %}
 
 
@@ -49,7 +64,7 @@
 $("#add_another").click(function(){
 	var i = parseInt($("#num_of_files").val()) + 1;
 	$("#num_of_files").val(i.toString());
-	$("#filesection").append("<input type=\"file\" name=\"file" + i.toString() + "\"/>");
+	$("#filesection").append("<br/><input type=\"file\" name=\"file" + i.toString() + "\"/>");
 });
 </script>
 {% endblock %}

@@ -48,6 +48,10 @@
 	color: #77887d;
 }
 
+p, h1, h2, h3{
+	font-family: 'Anaheim', sans-serif;
+}
+
 .navbar img{
 	display:inline-block;
 }
@@ -86,7 +90,7 @@
 	
 }
 
-.footer{
+.myfooter{
 	height:100px;
 }
 
@@ -136,4 +140,129 @@
 	);
 }
 
+.featured{
+	border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	background-color: #FFFFFF;
+	padding: 10px;
+	width: 350px;
+	vertical-align: top;
+}
 
+.custombutton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #45751b), color-stop(1, #95b879) );
+	background:-moz-linear-gradient( center top, #45751b 5%, #95b879 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#45751b', endColorstr='#95b879');
+	background-color:#45751b;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #268a16;
+	display:inline-block;
+	color:#264210;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #aade7c;
+	height: 30px;
+}.classname:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #95b879), color-stop(1, #45751b) );
+	background:-moz-linear-gradient( center top, #95b879 5%, #45751b 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#95b879', endColorstr='#45751b');
+	background-color:#95b879;
+}.classname:active {
+	position:relative;
+	top:1px;
+}
+
+.custombutton a{
+	text-decoration: none;
+	color:#264210;
+}
+
+.myform{
+	margin: auto;
+}
+
+.myform td{
+	text-align: left;
+	margin-right: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+input, select{
+	border-radius:5px;
+ /* mozilla */
+ -moz-border-radius:5px;
+ /* webkit */
+ -webkit-border-radius:5px;
+ width:200px;
+ height:25px;
+}
+
+textarea{
+	border-radius:5px;
+ /* mozilla */
+ -moz-border-radius:5px;
+ /* webkit */
+ -webkit-border-radius:5px;
+ width:300px;
+ height:100px;
+}
+
+.form_error{
+	color: red;
+	text-align: center;
+}
+
+.price_totals td{
+	padding-right: 20px;
+}
+
+table{
+	margin-bottom: 30px;
+}
+
+.alert{
+	-webkit-border-image: none;
+background-color: #DFF0D8;
+border-bottom-color: #D6E9C6;
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-left-color: #D6E9C6;
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: #D6E9C6;
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: #D6E9C6;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+border-top-style: solid;
+border-top-width: 1px;
+color: #468847;
+display: block;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 14px;
+height: 20px;
+line-height: 20px;
+margin-bottom: 5px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 14px;
+padding-right: 35px;
+padding-top: 8px;
+text-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px;
+width: 779px;
+}

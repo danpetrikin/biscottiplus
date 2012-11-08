@@ -2,25 +2,26 @@
 
 {% block content %}
 
-<h2>Bakery</h2>
+<h1 style="text-align: center">Bakery</h1>
 
 <div class="featured_section rounded_div grey_gradient">
-	<h2>Featured</h2>
-	<table><tr>
+	<h2 style="text-align: center">Featured</h2>
+	<table style="padding-bottom: 20px; padding-left: 20px;"><tr>
 	{% for item in featured %}
 		<td class="featured">
 			<a href="{% url item item.id %}" style="text-decoration: none;">
-					<h3 class="name">{{item.display_name}}</h3>
-					<span class="price">${{item.price}}</span>
-					<img src="{{item.image_url}}" alt="{{item.display_name}}"/>
-					<span class="short_desc">{{item.short_desc}}</span>	
+					<h3 class="name" style="text-align: left; float: left">{{item.display_name}}</h3><h3 style="text-align: right;">${{item.price}}</h3>
+					<img src="{{item.image_url}}" alt="{{item.display_name}}" style="width: 150px; height: 150px; float: left;"/>
+					<p class="short_desc">{{item.short_desc}}</p>
 			</a>
 		</td>
 		{% if forloop.last %}
 	     </tr>
 	   {% else %}
 	     {% if forloop.counter|divisibleby:"3" %}
-	       </tr><tr>
+	       </tr><tr style="height: 10px;"></tr><tr>
+	     {% else %}
+	     <td style="width: 25px;"></td>
 	     {% endif %}
 	   {% endif %}
 	{% endfor %}
@@ -28,24 +29,26 @@
 </div>
 
 <div class="category_section rounded_div grey_gradient">
-	<h2>Categories</h2>
-	<table><tr>
+	<h2 style="text-align: center">Categories</h2>
+	<table style="padding-bottom: 20px; padding-left: 20px;"><tr>
 	{% for category in categories %}
-	<td class="category">
+	<td class="featured" style="text-align: center;">
 		<a href="{% url category category.id %}" >
-			<span>{{category.display_name}}</span>
-			<img src="{{category.image_url}}" alt="{{category.display_name}}"/>
+			<h3 style="text-align: center;">{{category.display_name}}</h3>
+			<img src="{{category.image_url}}" alt="{{category.display_name}}" style="width: 150px; height: 150px;"/>
 		</a>
 	</td>
-	{% if forloop.last %}
+		{% if forloop.last %}
 	     </tr>
 	   {% else %}
-	     {% if forloop.counter|divisibleby:"3" %}
-	       </tr><tr>
+	   {% if forloop.counter|divisibleby:"3" %}
+	       </tr><tr style="height: 10px;"></tr><tr>
+	       {% else %}
+	     <td style="width: 25px;"></td>
 	     {% endif %}
 	   {% endif %}
 	{% endfor %}
-	</td>
+	</table>
 </div>
 
 

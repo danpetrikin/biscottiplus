@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Contact Us!</h2>
+<h1 style="text-align: center;">Contact Us!</h1>
 
 {% if posted and not success %}
 	<div class="form_error">
@@ -10,24 +10,36 @@
 {% endif %}
 
 {% if posted and success %}
-<h3>Thanks for contacting us. We will get back to you as soon as possible</h3>
+<h3 style="text-align: center;">Thanks for contacting us. We will get back to you as soon as possible</h3>
 {% else %}
+<p style="text-align: center;">If you have a question, comment, or suggestion we'd love to hear it!</p>
+
+<table class="myform grey_gradient rounded_div" style="padding: 20px;" >
 <form action="{% url contact %}" method="post"> 
-<p>If you have a question, comment, or suggestion we'd love to hear it!</p>
 
-<label for="name">Name</label>
-<input name="name" id="name" type="text"/>
+<tr>
+<td><label for="name">Name</label></td>
+<td><input name="name" id="name" type="text"/></td>
+</tr>
 
-<label for="phonenumber">Phone Number</label>
-<input name="phonenumber" id="phonenumber" type="text"/>
+<tr>
+<td><label for="phonenumber">Phone Number</label></td>
+<td><input name="phonenumber" id="phonenumber" type="text"/></td>
+</tr>
 
-<label for="email">Email</label>
-<input name="email" id="email" type="email"/>
+<tr>
+<td><label for="email">Email</label></td>
+<td><input name="email" id="email" type="email"/></td>
+</tr>
+<tr>
+<td><label for="message">Message</label></td>
+<td><textarea name="message" id="message"></textarea></td>
+</tr>
 
-<label for="message">Message</label>
-<textarea name="message" id="message"></textarea>
-
-<input type="submit" value="Send Your Message" />
+<tr>
+<td></td><td><input type="submit" value="Send Your Message" class="custombutton" /></td>
+</tr>
+</table>
 {%endif%}
 </form>
 {% endblock %}
