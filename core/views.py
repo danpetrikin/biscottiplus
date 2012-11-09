@@ -14,7 +14,7 @@ import cloudfiles
 from cloudfiles.errors import NoSuchContainer
 
 
-stripe.api_key = settings.STRIPE_API_KEY
+
 
 def tabnames():
     d = {}
@@ -135,7 +135,7 @@ def checkout(request):
     tax_percentage = float(AppSettings.instance(AppSettings).tax_percentage)/100
     shipping_on = AppSettings.instance(AppSettings).shipping_on
     shipping_options = ShippingOption.objects.filter(active=True).order_by('priority')
-    
+    stripe.api_key = AppSettings.instance(AppSettings).stripe_api_key
     if request.method=='POST':
         email_text_body = ''
         purchased = {}
