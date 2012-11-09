@@ -79,6 +79,18 @@ class Order(BaseModel):
     ship_to = models.TextField(null=True, blank=True)
     email = models.CharField(max_length=200, default='')
     html_content = models.TextField(null=True, blank=True)
+
+class HomePage(SingletonModel):
+    html_content = models.TextField(null=True, blank=True)
+    
+class AboutPage(SingletonModel):
+    html_content = models.TextField(null=True, blank=True)
+    
+class CSSFile(SingletonModel):
+    css_content = models.TextField(null=True, blank=True)
+    
+class JSFile(SingletonModel):
+    js_content = models.TextField(null=True, blank=True)
     
 class AppSettings(SingletonModel):
     tax_percentage = models.IntegerField(null=False, default=7)
@@ -86,7 +98,18 @@ class AppSettings(SingletonModel):
     send_to_mail_comma_separated_list = models.CharField(null=False, default='dan@blackbeltprogramming.com', max_length=1000)
     featured_section_on = models.BooleanField(default=True)
     featured_section_text = models.CharField(null=False, default='Featured', max_length=1000)
+    category_section_on = models.BooleanField(default=True)
     categories_section_text = models.CharField(null=False, default='Categories', max_length=1000)
+    make_my_cookies_header = models.CharField(null=False, 
+        default='Traditions shouldn\'t fade. We\'ll help continue to provide your family with the cookies you\'ve had for generations.', max_length=1000)
+    contact_us_header = models.CharField(null=False, default='If you have a question, comment, or suggestion we\'d love to hear it!', max_length=1000)
+    
+class PageTabName(SingletonModel):
+    home =  models.CharField(null=False, default='Home', max_length=50)
+    about =  models.CharField(null=False, default='About', max_length=50)
+    make_my_cookies = models.CharField(null=False, default='Make My Cookies &trade;', max_length=50)
+    bakery = models.CharField(null=False, default='Bakery', max_length=50)
+    contact = models.CharField(null=False, default='Contact', max_length=50)
     
 class ShippingOption(BaseModel):
     description = models.CharField(max_length=64, default='')

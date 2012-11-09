@@ -23,5 +23,7 @@ urlpatterns = patterns('core.views',
     url(r'^order_confirmed/(?P<id>\w+)/', 'order_confirmed', name='order_confirmed'),
     url(r'^remove_item_from_cart/(?P<id>\w+)/', 'remove_item_from_cart', name='remove_item_from_cart'),
     url(r'^foward/', 'foward', name='foward'),
-    url(r'^terms/', 'terms', name='terms')
+    url(r'^terms/', 'terms', name='terms'),
+    url(r'^custom_css/', 'custom_css', name='custom_css'),
+    url(r'^custom_js/', 'custom_js', name='custom_js')
 )

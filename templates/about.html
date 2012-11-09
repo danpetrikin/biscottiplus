@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-hello world
+
+{{about_content|safe}}
+
+{% endblock %}
+{% block includes %}
+<link href='http://fonts.googleapis.com/css?family=Strait' rel='stylesheet' type='text/css'>
+<link href='{% url custom_css %}' rel='stylesheet' type='text/css'>
+<script src="{% url custom_js %}"></script>
 {% endblock %}

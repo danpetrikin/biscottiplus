@@ -16,25 +16,45 @@ from cloudfiles.errors import NoSuchContainer
 
 stripe.api_key = settings.STRIPE_API_KEY
 
+def tabnames():
+    d = {}
+    d['home'] = PageTabName.instance(PageTabName).home
+    d['about'] = PageTabName.instance(PageTabName).about
+    d['make_my_cookies'] = PageTabName.instance(PageTabName).make_my_cookies
+    d['bakery'] = PageTabName.instance(PageTabName).bakery
+    d['contact'] = PageTabName.instance(PageTabName).contact
+    return d
+    
+
+@render_to('custom_file')
+def custom_css(request):
+    return {'content': CSSFile.instance(CSSFile).css_content , 'tabnames': tabnames()}
+
+@render_to('custom_file')
+def custom_js(request):
+    return {'content': JSFile.instance(JSFile).js_content , 'tabnames': tabnames()}
+
+
 @render_to('home.html')
 def home(request):
-    return {'tab':'home'}
+    return {'tab':'home', 'home_content': HomePage.instance(HomePage).html_content , 'tabnames': tabnames()}
 
 @render_to('terms.html')
 def terms(request):
-    return {}
+    return {'terms': AppSettings.instance(AppSettings).terms_and_conditions , 'tabnames': tabnames()}
 
 @render_to('storefront.html')
 def bakery(request):
     return {'tab':'bakery','featured':StoreItem.objects.filter(active=True, featured=True),
              'categories':Category.objects.filter(active=True),
              'featured_on': AppSettings.instance(AppSettings).featured_section_on,
+             'category_on': AppSettings.instance(AppSettings).category_section_on,
              'featured_text': AppSettings.instance(AppSettings).featured_section_text,
-             'category_text': AppSettings.instance(AppSettings).categories_section_text}
+             'category_text': AppSettings.instance(AppSettings).categories_section_text, 'tabnames': tabnames()}
 
 @render_to('about.html')
 def about(request):
-    return {'tab':'about'}
+    return {'tab':'about', 'about_content': AboutPage.instance(AboutPage).html_content , 'tabnames': tabnames()}
 
 @render_to('contact.html')
 def contact(request):
@@ -56,8 +76,8 @@ def contact(request):
         msg = DjrillMessage(subject, text_content, from_email, to, tags=[], from_name=from_name)
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        return {'tab':'contact', 'posted':True, 'success':True}
-    return {'tab':'contact'}
+        return {'tab':'contact', 'posted':True, 'success':True, 'content': AppSettings.instance(AppSettings).contact_us_header , 'tabnames': tabnames()}
+    return {'tab':'contact', 'content': AppSettings.instance(AppSettings).contact_us_header , 'tabnames': tabnames()}
 
 @render_to('mmc.html')
 def mmc(request):
@@ -91,7 +111,6 @@ def mmc(request):
         extra_html = ''
         
         for iter in range(1,num_of_files+1):
-            print iter
             try:
                 file  = request.FILES['file'+str(iter)]
                 if file:
@@ -108,8 +127,8 @@ def mmc(request):
         msg = DjrillMessage(subject, text_content, from_email, to, tags=[], from_name=from_name)
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        return {'tab':'mmc', 'posted':True, 'success':True}
-    return {'tab':'mmc'}
+        return {'tab':'mmc', 'posted':True, 'success':True, 'content':AppSettings.instance(AppSettings).make_my_cookies_header , 'tabnames': tabnames()}
+    return {'tab':'mmc', 'content': AppSettings.instance(AppSettings).make_my_cookies_header , 'tabnames': tabnames()}
 
 @render_to('checkout.html')
 def checkout(request):
@@ -148,9 +167,6 @@ def checkout(request):
         
         email_text_body = email_text_body + "Total: $" + '{:20,.2f}'.format(float(price / 100)) + '\n'
         
-        
-        
-        
         eship_to = request.POST.get('email')
         if not eship_to:
             return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options}
@@ -188,11 +204,10 @@ def checkout(request):
     
             if not stripe_charge.paid:
                 request.session['cart'] = purchased
-                return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options}
+                return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options, 'tabnames': tabnames()}
         except Exception as stripe_error:
-            print stripe_error
             request.session['cart'] = purchased
-            return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options}
+            return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options, 'tabnames': tabnames()}
         
         order.paid=True
         order.save()
@@ -225,20 +240,20 @@ def checkout(request):
         
         return HttpResponseRedirect(reverse('order_confirmed', args=(order.id,)))
             
-    return {'tab':'bakery', 'cart':request.session.get('cart'), 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options}
+    return {'tab':'bakery', 'cart':request.session.get('cart'), 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options , 'tabnames': tabnames()}
 
 @render_to('category.html')
 def category(request,id):
     category = Category.objects.get(id=id)
-    return{'tab':'bakery','category':category, 'items':StoreItem.objects.filter(active=True,category=category).order_by('priority')}
+    return{'tab':'bakery','category':category, 'items':StoreItem.objects.filter(active=True,category=category).order_by('priority'), 'tabnames': tabnames()}
     
 @render_to('item.html')
 def item(request,id):
-    return{'tab':'bakery','item':StoreItem.objects.get(id=id)}
+    return{'tab':'bakery','item':StoreItem.objects.get(id=id), 'tabnames': tabnames()}
     
 @render_to('order.html')
 def order_confirmed(request,id):
-    return {'order':Order.objects.get(id=id)}
+    return {'order':Order.objects.get(id=id), 'tabnames': tabnames()}
     
 @jsonify
 def item_to_cart(request,id):
@@ -258,7 +273,9 @@ def remove_item_from_cart(request,id):
     if item in cart:
         del cart[item]
     request.session['cart'] = cart
-    return {'success':True}
+    if cart:
+        return {'success':True, 'empty':False }
+    return {'success':True, 'empty':True }
 
 @jsonify
 def foward(request):

@@ -13,13 +13,13 @@
 
   <body class="wood">
 		<div class="navbar">
-			<img src="{{STATIC_URL}}img/logo.png" class="logo" alt="logo"/>
+			<a href="/"><img src="{{STATIC_URL}}img/logo.png" class="logo" alt="logo"/></a>
 			<ul>
-				<li {% if tab == 'home'%}class="active"{% endif %}><a href="{% url home %}">Home</a></li>
-				<li {% if tab == 'about'%}class="active"{% endif %}><a href="{% url about %}">About</a></li>
-				<li {% if tab == 'mmc'%}class="active"{% endif %}><a href="{% url mmc %}">Make My Cookies &trade;</a></li>
-				<li {% if tab == 'bakery'%}class="active"{% endif %}><a href="{% url bakery %}">Bakery</a></li>
-				<li {% if tab == 'contact'%}class="active"{% endif %}><a href="{% url contact %}">Contact</a></li>
+				<li {% if tab == 'home'%}class="active"{% endif %}><a href="{% url home %}">{{tabnames.home|safe}}</a></li>
+				<li {% if tab == 'about'%}class="active"{% endif %}><a href="{% url about %}">{{tabnames.about|safe}}</a></li>
+				<li {% if tab == 'mmc'%}class="active"{% endif %}><a href="{% url mmc %}">{{tabnames.make_my_cookies|safe}}</a></li>
+				<li {% if tab == 'bakery'%}class="active"{% endif %}><a href="{% url bakery %}">{{tabnames.bakery|safe}}</a></li>
+				<li {% if tab == 'contact'%}class="active"{% endif %}><a href="{% url contact %}">{{tabnames.contact|safe}}</a></li>
 			</ul>
 			<a href="{% url checkout %}"><img src="{{STATIC_URL}}img/cart.png" class="cart" alt="cart"/></a>
 		</div>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 style="text-align: center;">About Biscotti Plus</h1>
+
+<div class="grey_gradient rounded_div" style="overflow: hidden; width: 700px; margin: auto; padding: 15px;">
+	<img src="/static/img/logo.png" style="width: 250px; height: 400px; float: left;">
+	
+	<div style="float: right; margin-right: 20px; margin-left: 10px; width: 400px;">
+		<h2 style="text-align: center;">Cool Stuff About Us</h2>
+		<p>
+			This is where we blah blah on about how amazing we are. To the left is a picture of something pre-sized out. Just replace
+			the url form /static/img/logo.png to whatever you use in the upload utility. Sorry, I'm kind of burnt on writing
+			copy. I try to be a full service shop best I can, but there's only so many people's jobs I can do :)
+		</p>
+		
+		<p>
+			Feel free to go nuts here. Most people who go to this page are actually going to want to read about you. Just make sure
+			to break up different paragraphs with different p tags. By the way, this inline styling is terrible coding. This whole site
+			is a complete "hack job" and I'd never turn something in this way to a paying client. The python code is somewhat decent,
+			but I should really be using forms, validating input, and a bunch of other perfection items.  
+		</p>
+	</div>
+	
+	<div style="clear: both; margin-left: 20px; margin-right: 20px;">
+	<p>
+		Django does allow me to do it
+		fairly easily, but I'm basically attempting to gain 30 hours of work that I don't have to do taking short cuts.
+		And now that I've hit the length of the divs that float next to each other, I want to break out down here, but still within the main
+		div that has the gradient. We use gradients instead of flat colors for asthetic purposes, or however you spell that.
+	</p>
+	</div>
+	
+	<div style="float:left; margin-left: 20px; margin-right: 10px; width: 400px;">
+	<p>
+		If you want to make a link to an external site you do it <a href="http://www.w3schools.com/">like this.</a> You should probably check
+		that site out as well, it's a resource for learning pretty much anything about the basics of site building. Sorry if I came off as a
+		jerk saying you wouldn't be able to work directly in the project but it's true. I don't have over a day to sit down and bootstrap if
+		I'm not going to get Python help out of it. And, I'm pretty sure you're a Windows user, which is like the biggest PITA to set up.
+	</p>
+	<p>
+		First you have to install cygwin, just to mock a unix shell, then of course you need the right version of Python... and no it's not
+		the latest version. They royally fucked up with Python 3.x so most devs who know what they're doing use Python 2.7 . Then you've got
+		to get your virtual environment tools going, oh wait, you need python setuptools to install that first, then you've got to install
+		all the dependencies for the virtual environment in requirements.txt, but some of those will fail because you'll still need to install
+		MongoDB and a GCC compiler since we'd be compiling the PIL package. Good luck getting a GCC compiler in Windows correct on the first try.
+	</p>
+	</div>
+	<img src="/static/img/logo.png" style="width: 250px; height: 400px; float: right;">
+	
+	<div style="clear: both; margin-left: 20px; margin-right: 20px;">
+	<p>
+		After all that's done you'll then need to spend like half a day just learning the basics of Django and how to even run your project. Don't get
+		me wrong, <a href="https://www.djangoproject.com/">Django is an amazing framework.</a> It's the reason I can bang out projects faster than
+		entire development teams combined. I know most of the framework inside and out. It's just a very large initial ramp up time in exchange for
+		insanity in the productivity level. Honestly, at the pace most engineers move you'd be lucky if they were querying a relational database,
+		let alone the NoSQL ones I use since I'm captain bleeding edge technology. But hey, I don't have to rebuild my damn database every time
+		I want to change a data model so again, I can write projects as fast as I can edit them, and not be slowed down by silly tools that compile,
+		need handholding, or any of the crap that coperation techs shove down your throat.
+	</p>
+	
+	<p>
+		But that's enough ranting. If it's not obvious by now, I think this page is a fantastic place to put a wall of text and information. Oh and
+		feel free to go nuts and change the content. The image assets I chose were the fastest I could find. I had a feeling you'd want to replace
+		the images with ones of your own products anyhow. If you need help photoshopping them just send them over. Lauren's off and owes me some
+		dev time anyhow. 
+	</p>
+	</div>
+	
+</div>
+{% endblock %}

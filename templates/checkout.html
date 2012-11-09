@@ -18,17 +18,28 @@
 	</div>
 	{% endif %}
 	
+	
+	{% if not cart %}
+	<div class="rounded_div red_gradient" style="text-align: center; margin: auto; width: 600px;">
+		<h2>YOUR CART IS EMPTY.</h2>
+		<h3> PLEASE <a href="{% url bakery %}">VISIT THE BAKERY</a> IF YOU WISH TO PURCHASE COOKIES</h2>
+	</div>
+	{% else %}
+	
 	<div style="margin: auto; text-align: center;">
 	<div class="cart_contents light_blue_gradient rounded_top_div" style="width: 600px; margin: auto;">
-		<table class="myform " style="padding: 20px;" >
+		<h3 style="padding-top: 10px;">Your Cart</h3>
+		<img style="float: right; width: 70px; height: 250px; margin-right: 30px;" src="/static/img/cards_accepted.gif" />
+		<table class="myform " style="padding-left: 20px; padding-right: 20px;" >
 		<tr><td class="column_header">Name</td><td><span class="column_header">Quantity</span></td><td><span class="column_header">Price</span></td></tr>
 		{% for item, quantity in cart.items %}
 		<tr class="itemrow" id="row{{item.id}}"></td>
 			<td><span class="column">{{item.name}}</span>
-			<td><input class="column integer" type="text" name="id_{{item.id}}" id="{{item.id}}" value="{{quantity}}" style="width: 40px;"/>
+			<td><input class="column integer" type="number" name="id_{{item.id}}" id="{{item.id}}" value="{{quantity}}" style="width: 40px;"
+				onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
 			<input type="hidden" id="price{{item.id}}" value="{{item.price}}"/></td>
 			<td><span class="column" id="showprice{{item.id}}">${{quantity|multiplymoney:item.price}}</span></td>
-			<td><a class="remove_from_cart" id="remove{{item.id}}"><button type="button" class="button2">Remove</button></a></td>
+			<td><a class="remove_from_cart" id="remove{{item.id}}"><button type="button" class="button3">Remove</button></a></td>
 		</tr>
 		{% endfor %}
 		
@@ -43,7 +54,8 @@
 		{% endif %}
 		</tr>
 		</table>
-	
+		
+		
 		<table class="price_totals" style="margin: auto; text-align: left;">
 		<tr>
 		<td><label for="subtotalprice">Subtotal</label></td>
@@ -60,14 +72,14 @@
 		
 	</div></div>
 	<div class="credit_card_info grey_gradient rounded_bottom_div" style="text-align: center;width: 600px; margin: auto;">
-		<hr/>
+		<h3>Payment Info</h3>
 		<table class="myform ">
 		<tr><td><label for="cardno">Card Number</label></td>
-		<td><input type="text" name="cardno"  maxlength="16" /></td></tr>
-		<tr><td><label for="cvv">CVV</label></td>
+		<td><input type="text" name="cardno"  maxlength="16" /></td>
+		<td><label for="cvv">CVV</label></td>
 		<td><input type="text" name="cvv" maxlength="3" style="width: 40px;"/></td></tr>
-		<tr><td><label>Expiration Month</label></td>
-		<td><select name="month">
+		<tr><td><label>Exp Month</label></td>
+		<td><select name="month" style="width: 50px;">
 			<option value="1">01</option>
 			<option value="2">02</option>
 			<option value="3">03</option>
@@ -80,10 +92,9 @@
 			<option value="10">10</option>
 			<option value="11">11</option>
 			<option value="12">12</option>
-		</select></td></tr>
-		<tr>
-		<td><label>Expiration Year</label></td>
-		<td><select name="year">
+		</select></td>
+		<td><label>Exp Year</label></td>
+		<td><select name="year" style="width: 50px;">
 			<option value="2012">12</option>
 			<option value="2013">13</option>
 			<option value="2014">14</option>
@@ -97,33 +108,35 @@
 		</select></td></tr>
 		</table>
 		<hr/>
-		<table class="myform  " >
+		<h3>Delivery Information</h3>
+		<table class="myform  "  style="margin-left: 10px; margin-right: 10px;">
 		<tr><td><label for="email">Email</label></td>
-		<td><input type="email" name="email"/></td></tr>
+		<td colspan="2"><input type="email" name="email" style="width: 150px;"/></td>
 		
-		<tr><td><label for="shipname">Name</label></td>
-		<td><input type="text" name="shipname" /></td></tr>
+		<td><label for="shipname">Name</label></td>
+		<td colspan="2"><input type="text" name="shipname" style="width: 150px;" /></td></tr>
 		
 		<tr><td><label for="add1">Address Line 1</label></td>
-		<td><input type="text" name="add1" /></td></tr>
+		<td colspan="2"><input type="text" name="add1" style="width: 150px;" /></td>
 		
-		<tr><td><label for="add2">Address Line 2</label></td>
-		<td><input type="text" name="add2" /></td></tr>
+		<td><label for="add2">Address Line 2</label></td>
+		<td colspan="2"><input type="text" name="add2" style="width: 150px;" /></td></tr>
 		
 		<tr><td><label for="city">City</label></td>
-		<td><input type="text" name="city" /></td></tr>
+		<td><input type="text" name="city" style="width: 120px;" /></td>
 		
-		<tr><td><label for="state">State</label></td>
-		<td><input type="text" name="state" /></td></tr>
+		<td><label for="state">State</label></td>
+		<td><input type="text" name="state" style="width: 40px;" maxlength="2"/></td>
 		
-		<tr><td><label for="zip">Zip</label></td>
-		<td><input type="text" name="zip" /></td></tr>
+		<td><label for="zip">Zip</label></td>
+		<td><input type="text" name="zip" style="width: 60px;" maxlength="10" /></td></tr>
+		
 		</table>
 		
 		<div style="text-align: center;"><input class="button2" type="submit" value="Buy These!" /></div>
 		<br/>
 	</div>
-	
+	{% endif %}
 	
 </form>
 </div>
@@ -181,6 +194,11 @@
 				type: 'POST',
 		        success : function(data) {
 		        	if(data.success == true){
+		        		
+		        		if (data.empty == true){
+		        			window.location.href=window.location.href;
+		        		}
+		        		
 		        		$('#row{{item.id}}').empty();
 						$('#row{{item.id}}').remove();
 						updatetotal();      		
