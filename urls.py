@@ -3,12 +3,13 @@ from django.views.generic.base import RedirectView
 from core.views import *
 from django.contrib import admin
 from djrill import DjrillAdminSite
+from django.conf import settings
 
 admin.site = DjrillAdminSite()
 admin.autodiscover()
 
 urlpatterns = patterns('core.views',
-    # Examples:
+
     url(r'^$', 'home', name='home'),
     url(r'^bakery', 'bakery', name='bakery'),
     url(r'^about', 'about', name='about'),
@@ -26,4 +27,10 @@ urlpatterns = patterns('core.views',
     url(r'^terms/', 'terms', name='terms'),
     url(r'^custom_css/', 'custom_css', name='custom_css'),
     url(r'^custom_js/', 'custom_js', name='custom_js')
+)
+
+urlpatterns += patterns('',
+        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.STATIC_ROOT,
+        }),
 )

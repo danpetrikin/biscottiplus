@@ -52,7 +52,7 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(PROJECT_ROOT,"live_static")
 
 STATICFILES_DIRS = (
   os.path.abspath(os.path.join(PROJECT_ROOT, "static")),
@@ -138,8 +138,7 @@ EMAIL_HOST = 'smtp.mandrillapp.com'
 EMAIL_PORT = "587"
 EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
 DEFAULT_FROM_EMAIL = 'support@biscottiplus.com'
-LOGIN_REDIRECT_URL = '/'
-
+APPEND_SLASH = True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
