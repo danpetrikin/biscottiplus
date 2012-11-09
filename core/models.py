@@ -4,6 +4,7 @@ from djangotoolbox.fields import DictField
 from singleton_models.models import SingletonModel
 
 PRODUCT_IMAGES_DIR = 'product_images/'
+SITE_IMAGES_DIR = 'site_images/'
 SHIPPING_DEFAULT = 500
 
 class BaseModel(models.Model):
@@ -91,7 +92,10 @@ class CSSFile(SingletonModel):
     
 class JSFile(SingletonModel):
     js_content = models.TextField(null=True, blank=True)
-    
+
+class CustomPicture(BaseModel):
+    image = models.ImageField(upload_to=SITE_IMAGES_DIR)
+
 class AppSettings(SingletonModel):
     tax_percentage = models.IntegerField(null=False, default=7)
     shipping_on = models.BooleanField(default=False)
