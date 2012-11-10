@@ -188,6 +188,12 @@
 			updatetotal();
 		});
 		
+		$('#{{item.id}}').click(function(){
+			var price = parseFloat($('#{{item.id}}').val() * parseFloat($('#price{{item.id}}').val()));
+			$('#showprice{{item.id}}').html(price.formatMoney(2, '.', ','));
+			updatetotal();
+		});
+		
 		$('#remove{{item.id}}').click(function(){
 			$.ajax({
 				url : '{% url remove_item_from_cart item.id %}',
