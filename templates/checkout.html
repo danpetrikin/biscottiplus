@@ -35,7 +35,7 @@
 		{% for item, quantity in cart.items %}
 		<tr class="itemrow" id="row{{item.id}}"></td>
 			<td><span class="column">{{item.name}}</span>
-			<td><input class="column integer" type="number" name="id_{{item.id}}" id="{{item.id}}" value="{{quantity}}" style="width: 40px;"
+			<td style="min-width: 60px;"><input class="column integer" type="number" name="id_{{item.id}}" id="{{item.id}}" value="{{quantity}}" style="width: 40px;"
 				onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
 			<input type="hidden" id="price{{item.id}}" value="{{item.price}}"/></td>
 			<td><span class="column" id="showprice{{item.id}}">${{quantity|multiplymoney:item.price}}</span></td>
