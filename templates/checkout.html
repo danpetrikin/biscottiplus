@@ -183,12 +183,16 @@
 	
 	{% for item, quantity in cart.items %}
 		$('#{{item.id}}').keyup(function(){
+			if ( parseFloat($('#{{item.id}}').val()) < 1)
+				$('#{{item.id}}').val("1");
 			var price = parseFloat($('#{{item.id}}').val() * parseFloat($('#price{{item.id}}').val()));
 			$('#showprice{{item.id}}').html(price.formatMoney(2, '.', ','));
 			updatetotal();
 		});
 		
 		$('#{{item.id}}').click(function(){
+			if ( parseFloat($('#{{item.id}}').val()) < 1)
+				$('#{{item.id}}').val("1");
 			var price = parseFloat($('#{{item.id}}').val() * parseFloat($('#price{{item.id}}').val()));
 			$('#showprice{{item.id}}').html(price.formatMoney(2, '.', ','));
 			updatetotal();
