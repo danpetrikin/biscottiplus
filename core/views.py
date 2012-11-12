@@ -24,7 +24,10 @@ def tabnames():
     d['bakery'] = PageTabName.instance(PageTabName).bakery
     d['contact'] = PageTabName.instance(PageTabName).contact
     return d
-    
+
+@render_to('robots.txt')
+def robots(request):
+    return {}    
 
 @render_to('custom_file')
 def custom_css(request):

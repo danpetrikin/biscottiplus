@@ -26,7 +26,8 @@ urlpatterns = patterns('core.views',
     url(r'^foward/', 'foward', name='foward'),
     url(r'^terms/', 'terms', name='terms'),
     url(r'^custom_css/', 'custom_css', name='custom_css'),
-    url(r'^custom_js/', 'custom_js', name='custom_js')
+    url(r'^custom_js/', 'custom_js', name='custom_js'),
+    url(r'^robots.txt', 'robots', name='robots')
 )
 
 urlpatterns += patterns('',
