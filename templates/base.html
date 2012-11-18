@@ -15,7 +15,7 @@
 
   <body class="wood">
 		<div class="navbar">
-			<a href="/"><img src="{{STATIC_URL}}img/logo.png" class="logo" alt="logo"/></a>
+			<a href="/"><img src="{{STATIC_URL}}img/logo.png" class="logo" style="width: {{logo.logo_width}}px; height: {{logo.logo_height}}px;" alt="logo"/></a>
 			<ul>
 				<li {% if tab == 'home'%}class="active"{% endif %}><a href="{% url home %}">{{tabnames.home|safe}}</a></li>
 				<li {% if tab == 'about'%}class="active"{% endif %}><a href="{% url about %}">{{tabnames.about|safe}}</a></li>

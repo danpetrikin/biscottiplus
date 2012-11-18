@@ -109,6 +109,8 @@ class AppSettings(SingletonModel):
         default='Traditions shouldn\'t fade. We\'ll help continue to provide your family with the cookies you\'ve had for generations.', max_length=1000)
     contact_us_header = models.CharField(null=False, default='If you have a question, comment, or suggestion we\'d love to hear it!', max_length=1000)
     terms_and_conditions = models.TextField(null=True, blank=True)
+    logo_width = models.IntegerField(null=False, default=250)
+    logo_height = models.IntegerField(null=False, default=100)
     
 class PageTabName(SingletonModel):
     home =  models.CharField(null=False, default='Home', max_length=50)

@@ -25,26 +25,32 @@ def tabnames():
     d['contact'] = PageTabName.instance(PageTabName).contact
     return d
 
+def logo():
+    d = {}
+    d['logo_width'] = AppSettings.instance(AppSettings).logo_width
+    d['logo_height'] = AppSettings.instance(AppSettings).logo_height
+    return d
+
 @render_to('robots.txt')
 def robots(request):
     return {}    
 
 @render_to('custom_file')
 def custom_css(request):
-    return {'content': CSSFile.instance(CSSFile).css_content , 'tabnames': tabnames()}
+    return {'content': CSSFile.instance(CSSFile).css_content , 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('custom_file')
 def custom_js(request):
-    return {'content': JSFile.instance(JSFile).js_content , 'tabnames': tabnames()}
+    return {'content': JSFile.instance(JSFile).js_content , 'tabnames': tabnames(), 'logo': logo()}
 
 
 @render_to('home.html')
 def home(request):
-    return {'tab':'home', 'home_content': HomePage.instance(HomePage).html_content , 'tabnames': tabnames()}
+    return {'tab':'home', 'home_content': HomePage.instance(HomePage).html_content , 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('terms.html')
 def terms(request):
-    return {'terms': AppSettings.instance(AppSettings).terms_and_conditions , 'tabnames': tabnames()}
+    return {'terms': AppSettings.instance(AppSettings).terms_and_conditions , 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('storefront.html')
 def bakery(request):
@@ -57,7 +63,7 @@ def bakery(request):
 
 @render_to('about.html')
 def about(request):
-    return {'tab':'about', 'about_content': AboutPage.instance(AboutPage).html_content , 'tabnames': tabnames()}
+    return {'tab':'about', 'about_content': AboutPage.instance(AboutPage).html_content , 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('contact.html')
 def contact(request):
@@ -79,8 +85,8 @@ def contact(request):
         msg = DjrillMessage(subject, text_content, from_email, to, tags=[], from_name=from_name)
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        return {'tab':'contact', 'posted':True, 'success':True, 'content': AppSettings.instance(AppSettings).contact_us_header , 'tabnames': tabnames()}
-    return {'tab':'contact', 'content': AppSettings.instance(AppSettings).contact_us_header , 'tabnames': tabnames()}
+        return {'tab':'contact', 'posted':True, 'success':True, 'content': AppSettings.instance(AppSettings).contact_us_header , 'tabnames': tabnames(), 'logo': logo()}
+    return {'tab':'contact', 'content': AppSettings.instance(AppSettings).contact_us_header , 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('mmc.html')
 def mmc(request):
@@ -130,8 +136,8 @@ def mmc(request):
         msg = DjrillMessage(subject, text_content, from_email, to, tags=[], from_name=from_name)
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        return {'tab':'mmc', 'posted':True, 'success':True, 'content':AppSettings.instance(AppSettings).make_my_cookies_header , 'tabnames': tabnames()}
-    return {'tab':'mmc', 'content': AppSettings.instance(AppSettings).make_my_cookies_header , 'tabnames': tabnames()}
+        return {'tab':'mmc', 'posted':True, 'success':True, 'content':AppSettings.instance(AppSettings).make_my_cookies_header , 'tabnames': tabnames(), 'logo': logo()}
+    return {'tab':'mmc', 'content': AppSettings.instance(AppSettings).make_my_cookies_header , 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('checkout.html')
 def checkout(request):
@@ -207,10 +213,12 @@ def checkout(request):
     
             if not stripe_charge.paid:
                 request.session['cart'] = purchased
-                return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options, 'tabnames': tabnames()}
+                return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 
+                        'shipping_options':shipping_options, 'tabnames': tabnames(), 'logo': logo()}
         except Exception as stripe_error:
             request.session['cart'] = purchased
-            return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options, 'tabnames': tabnames()}
+            return {'tab':'bakery', 'cart':request.session.get('cart'), 'error':True, 'tax':tax_percentage, 'shipping_on':shipping_on, 
+                    'shipping_options':shipping_options, 'tabnames': tabnames(), 'logo': logo()}
         
         order.paid=True
         order.save()
@@ -243,20 +251,22 @@ def checkout(request):
         
         return HttpResponseRedirect(reverse('order_confirmed', args=(order.id,)))
             
-    return {'tab':'bakery', 'cart':request.session.get('cart'), 'tax':tax_percentage, 'shipping_on':shipping_on, 'shipping_options':shipping_options , 'tabnames': tabnames()}
+    return {'tab':'bakery', 'cart':request.session.get('cart'), 'tax':tax_percentage, 'shipping_on':shipping_on, 
+            'shipping_options':shipping_options , 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('category.html')
 def category(request,id):
     category = Category.objects.get(id=id)
-    return{'tab':'bakery','category':category, 'items':StoreItem.objects.filter(active=True,category=category).order_by('priority'), 'tabnames': tabnames()}
+    return{'tab':'bakery','category':category, 'items':StoreItem.objects.filter(active=True,category=category).order_by('priority'), 
+           'tabnames': tabnames(), 'logo': logo()}
     
 @render_to('item.html')
 def item(request,id):
-    return{'tab':'bakery','item':StoreItem.objects.get(id=id), 'tabnames': tabnames()}
+    return{'tab':'bakery','item':StoreItem.objects.get(id=id), 'tabnames': tabnames(), 'logo': logo()}
     
 @render_to('order.html')
 def order_confirmed(request,id):
-    return {'order':Order.objects.get(id=id), 'tabnames': tabnames()}
+    return {'order':Order.objects.get(id=id), 'tabnames': tabnames(), 'logo': logo()}
     
 @jsonify
 def item_to_cart(request,id):
