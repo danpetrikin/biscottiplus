@@ -59,7 +59,7 @@ def bakery(request):
              'featured_on': AppSettings.instance(AppSettings).featured_section_on,
              'category_on': AppSettings.instance(AppSettings).category_section_on,
              'featured_text': AppSettings.instance(AppSettings).featured_section_text,
-             'category_text': AppSettings.instance(AppSettings).categories_section_text, 'tabnames': tabnames()}
+             'category_text': AppSettings.instance(AppSettings).categories_section_text, 'tabnames': tabnames(), 'logo': logo()}
 
 @render_to('about.html')
 def about(request):
